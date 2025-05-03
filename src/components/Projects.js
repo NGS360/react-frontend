@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import config from '../config';
 
@@ -88,14 +89,26 @@ function Projects() {
               </tr>
             </thead>
             <tbody>
-              {projects.map((project) => (
-                <tr key={project.id || project._id || project.project_id}>
-                  <td>{project.project_id || project.id || project._id}</td>
-                  <td>{project.name}</td>
-                  <td>{renderAttributes(project.attributes)}</td>
-                  <td>{project.createdAt ? new Date(project.createdAt).toLocaleString() : 'N/A'}</td>
-                </tr>
-              ))}
+              {projects.map((project) => {
+                const projectId = project.project_id || project.id || project._id;
+                return (
+                  <tr
+                    key={projectId}
+                    className="cursor-pointer"
+                    onClick={() => window.location.href = `/project/${projectId}`}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <td>
+                      <Link to={`/project/${projectId}`} className="text-decoration-none">
+                        {projectId}
+                      </Link>
+                    </td>
+                    <td>{project.name}</td>
+                    <td>{renderAttributes(project.attributes)}</td>
+                    <td>{project.createdAt ? new Date(project.createdAt).toLocaleString() : 'N/A'}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

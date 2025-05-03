@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import CreateProjectDialog from './components/CreateProjectDialog';
 import Projects from './components/Projects';
+import Project from './components/Project';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -106,6 +107,7 @@ function App() {
         {/* Routes */}
         <Routes>
           <Route path="/projects" element={<Projects />} />
+          <Route path="/project/:projectId" element={<Project />} />
           <Route path="/" element={
             <div className="search-container">
               <form onSubmit={handleSearch}>
