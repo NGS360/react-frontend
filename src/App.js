@@ -75,11 +75,6 @@ function App() {
               </ul>
             </div>
             
-            {/* Direct navigation links for desktop (always visible) */}
-            <div className="d-none d-lg-flex me-3">
-              <Link className="nav-link me-3" to="/">Home</Link>
-              <Link className="nav-link" to="/projects">Projects</Link>
-            </div>
             
             {/* Right side of toolbar */}
             <div className="ms-auto d-flex align-items-center">
