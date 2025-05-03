@@ -18,7 +18,8 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           {/* Logo on the left */}
-          <a className="navbar-brand" href="/">
+          <a className="navbar-brand d-flex align-items-center" href="/">
+            <img src="/circos_color.svg" alt="NGS360 Logo" className="navbar-logo" />
             <h1 className="logo mb-0">
               <span className="logo-n">N</span>
               <span className="logo-g">G</span>

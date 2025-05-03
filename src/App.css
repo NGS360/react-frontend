@@ -51,6 +51,13 @@
   font-size: 1.8rem;
 }
 
+/* SVG logo styling */
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  margin-right: 8px;
+}
+
 /* Chromatogram colors for DNA sequencing */
 .logo-n {
   color: #4CAF50; /* Green for Adenine */
