@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../App.css';
+import config from '../config';
 
 function CreateProjectDialog({ show, handleClose, handleCreate }) {
   const [projectName, setProjectName] = useState('');
@@ -63,7 +64,7 @@ function CreateProjectDialog({ show, handleClose, handleCreate }) {
       setError('');
       
       // Send data to API
-      const response = await fetch('/projects', {
+      const response = await fetch(config.API_ENDPOINTS.projects, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

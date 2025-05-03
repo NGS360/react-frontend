@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
+import config from '../config';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -10,7 +11,7 @@ function Projects() {
     const fetchProjects = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/projects');
+        const response = await fetch(config.API_ENDPOINTS.projects);
         
         if (!response.ok) {
           throw new Error(`Error: ${response.status}`);
