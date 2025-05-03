@@ -1,15 +1,32 @@
 import React, { useState } from 'react';
 import './App.css';
+import CreateProjectDialog from './components/CreateProjectDialog';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
   const [username, setUsername] = useState('');
+  const [showCreateProjectDialog, setShowCreateProjectDialog] = useState(false);
+  const [projects, setProjects] = useState([]);
 
   const handleSearch = (e) => {
     e.preventDefault();
     // In a real application, you would handle the search functionality here
     console.log('Searching for:', searchQuery);
     alert(`You searched for: ${searchQuery}`);
+  };
+
+  const handleOpenCreateProjectDialog = () => {
+    setShowCreateProjectDialog(true);
+  };
+
+  const handleCloseCreateProjectDialog = () => {
+    setShowCreateProjectDialog(false);
+  };
+
+  const handleCreateProject = (newProject) => {
+    setProjects([...projects, newProject]);
+    setShowCreateProjectDialog(false);
+    alert(`Project "${newProject.name}" created successfully!`);
   };
 
   return (
@@ -30,8 +47,17 @@ function App() {
             </h1>
           </a>
           
-          {/* Username field on the right */}
-          <div className="ms-auto">
+          {/* Right side of toolbar */}
+          <div className="ms-auto d-flex align-items-center">
+            {/* Create Project button */}
+            <button
+              className="btn btn-primary me-3"
+              onClick={handleOpenCreateProjectDialog}
+            >
+              Create ProjectID
+            </button>
+
+            {/* Username input field */}
             <div className="input-group">
               <input
                 type="text"
@@ -80,6 +106,13 @@ function App() {
           </div>
         </form>
       </div>
+
+      {/* Create Project Dialog */}
+      <CreateProjectDialog
+        show={showCreateProjectDialog}
+        handleClose={handleCloseCreateProjectDialog}
+        handleCreate={handleCreateProject}
+      />
     </div>
   );
 }
