@@ -18,7 +18,12 @@ function Projects() {
         }
         
         const data = await response.json();
-        setProjects(data);
+        // Extract projects array from the response
+        if (data && data.projects) {
+          setProjects(data.projects);
+        } else {
+          setProjects([]);
+        }
         setError(null);
       } catch (err) {
         console.error('Error fetching projects:', err);
@@ -84,8 +89,8 @@ function Projects() {
             </thead>
             <tbody>
               {projects.map((project) => (
-                <tr key={project.id || project._id}>
-                  <td>{project.id || project._id}</td>
+                <tr key={project.id || project._id || project.project_id}>
+                  <td>{project.project_id || project.id || project._id}</td>
                   <td>{project.name}</td>
                   <td>{renderAttributes(project.attributes)}</td>
                   <td>{project.createdAt ? new Date(project.createdAt).toLocaleString() : 'N/A'}</td>
