@@ -12,6 +12,8 @@ In development mode, the application uses the proxy feature of Create React App 
 
 This means API requests will be automatically proxied to http://localhost:5000 during development, and you don't need to specify the full URL in your API calls.
 
+**Note:** The API endpoints are configured to use the `/api/projects` path, not just `/projects`. This matches the actual backend API structure.
+
 ## Production Mode
 
 For production deployment, you need to configure the API URL:
@@ -33,6 +35,13 @@ The application uses a central configuration file (`src/config.js`) that:
 1. Detects whether the app is running in development or production mode
 2. In development: Uses relative URLs to leverage the proxy feature
 3. In production: Uses the configured API base URL from environment variables
+
+API endpoints are defined in the config file:
+```javascript
+const API_ENDPOINTS = {
+  projects: `${API_BASE_URL}/api/projects`,
+};
+```
 
 This approach allows you to:
 - Develop locally without CORS issues

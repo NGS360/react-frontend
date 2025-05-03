@@ -12,7 +12,7 @@ const API_BASE_URL = isProduction
 
 // API endpoints
 const API_ENDPOINTS = {
-  projects: `${API_BASE_URL}/projects`,
+  projects: `${API_BASE_URL}/api/projects`,
 };
 
 const config = {
