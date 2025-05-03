@@ -77,19 +77,32 @@
 }
 
 .search-box-container {
-  max-width: 580px;
+  max-width: 1200px;
   width: 100%;
   margin-bottom: 30px;
   box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
   border-radius: 24px;
   overflow: hidden;
+  display: flex;
 }
 
 .search-box {
   height: 44px;
-  border-radius: 24px;
+  border-radius: 24px 0 0 24px;
   border: none;
   padding: 0 15px;
+  flex-grow: 1; /* Take up all available space */
+  font-size: 16px;
+  min-width: 0; /* Allow the input to shrink below its content size */
+}
+
+/* Fix for input-group to ensure proper width distribution */
+.input-group {
+  width: 100%;
+}
+
+.form-control {
+  min-width: 0; /* Allow the form control to shrink */
 }
 
 .search-box:focus {
@@ -97,9 +110,19 @@
   box-shadow: none;
 }
 
-.input-group-append button {
+.clear-button {
   border: none;
   background: transparent;
+  border-radius: 0 24px 24px 0;
+  padding: 0 15px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .button-container {

@@ -50,7 +50,7 @@ function App() {
       {/* Search Container */}
       <div className="search-container">
         <form onSubmit={handleSearch}>
-          <div className="input-group search-box-container">
+          <div className="search-box-container">
             <input
               type="text"
               className="form-control search-box"
@@ -58,13 +58,15 @@ function App() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               aria-label="Search"
+              size="45" /* Explicitly set size to accommodate 45 characters */
             />
-            <div className="input-group-append">
-              <button className="btn btn-outline-secondary" type="button" onClick={() => setSearchQuery('')}>
-                <i className="fa fa-times"></i>
-                ✕
-              </button>
-            </div>
+            <button
+              className="btn btn-outline-secondary clear-button"
+              type="button"
+              onClick={() => setSearchQuery('')}
+            >
+              ✕
+            </button>
           </div>
           
           <div className="button-container">
