@@ -3,6 +3,7 @@ import './App.css';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [username, setUsername] = useState('');
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -13,11 +14,41 @@ function App() {
 
   return (
     <div className="App">
-      <div className="search-container">
-        <div className="logo-container">
-          <h1 className="logo">NGS360</h1>
+      {/* Bootstrap Navbar */}
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          {/* Logo on the left */}
+          <a className="navbar-brand" href="/">
+            <h1 className="logo mb-0">
+              <span className="logo-n">N</span>
+              <span className="logo-g">G</span>
+              <span className="logo-s">S</span>
+              <span className="logo-3">3</span>
+              <span className="logo-6">6</span>
+              <span className="logo-0">0</span>
+            </h1>
+          </a>
+          
+          {/* Username field on the right */}
+          <div className="ms-auto">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <button className="btn btn-outline-secondary" type="button">
+                Login
+              </button>
+            </div>
+          </div>
         </div>
-        
+      </nav>
+
+      {/* Search Container */}
+      <div className="search-container">
         <form onSubmit={handleSearch}>
           <div className="input-group search-box-container">
             <input

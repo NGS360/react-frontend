@@ -1,6 +1,30 @@
 .App {
-  text-align: center;
   font-family: Arial, sans-serif;
+}
+
+/* Navbar styling */
+.navbar {
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  padding: 0;
+  margin-right: 2rem;
+}
+
+/* Username field and login button styling */
+.navbar .input-group {
+  width: auto;
+}
+
+.navbar .btn-outline-secondary {
+  border-color: #ced4da;
+}
+
+.navbar .btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+  border-color: #ced4da;
 }
 
 .search-container {
@@ -8,19 +32,48 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px); /* Adjust for navbar height */
   padding: 20px;
+  text-align: center;
+  margin-top: 1rem;
 }
 
-.logo-container {
-  margin-bottom: 30px;
-}
-
+/* Logo styling */
 .logo {
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: bold;
-  color: #4285F4;
-  margin-bottom: 20px;
+  letter-spacing: -1px;
+  margin: 0;
+}
+
+/* Navbar logo size adjustment */
+.navbar-brand .logo {
+  font-size: 1.8rem;
+}
+
+/* Chromatogram colors for DNA sequencing */
+.logo-n {
+  color: #4CAF50; /* Green for Adenine */
+}
+
+.logo-g {
+  color: #000000; /* Black for Guanine */
+}
+
+.logo-s {
+  color: #2196F3; /* Blue for Cytosine */
+}
+
+.logo-3 {
+  color: #F44336; /* Red for Thymine */
+}
+
+.logo-6 {
+  color: #4CAF50; /* Green for Adenine */
+}
+
+.logo-0 {
+  color: #2196F3; /* Blue for Cytosine */
 }
 
 .search-box-container {
