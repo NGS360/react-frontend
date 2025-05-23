@@ -1,3 +1,8 @@
+# Complete Projects.js Implementation with Pagination
+
+Below is the complete implementation of the Projects.js file with pagination functionality:
+
+```javascript
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
@@ -18,6 +23,10 @@ function Projects() {
   // Sorting state
   const [sortBy, setSortBy] = useState('id');
   const [sortOrder, setSortOrder] = useState('asc');
+
+  useEffect(() => {
+    fetchProjects(currentPage, perPage, sortBy, sortOrder);
+  }, []); // Empty dependency array to run only once on component mount
 
   const fetchProjects = async (page = currentPage, itemsPerPage = perPage, sort = sortBy, order = sortOrder) => {
     try {
@@ -57,10 +66,6 @@ function Projects() {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    fetchProjects(currentPage, perPage, sortBy, sortOrder);
-  }, []); // Empty dependency array to run only once on component mount
 
   const handleSort = (column) => {
     const newSortOrder = column === sortBy && sortOrder === 'asc' ? 'desc' : 'asc';
@@ -159,9 +164,9 @@ function Projects() {
       <div className="d-flex justify-content-between align-items-center mt-3">
         <div className="d-flex align-items-center">
           <span className="me-2">Items per page:</span>
-          <select
-            className="form-select form-select-sm"
-            value={perPage}
+          <select 
+            className="form-select form-select-sm" 
+            value={perPage} 
             onChange={handlePerPageChange}
             style={{ width: 'auto' }}
           >
@@ -175,8 +180,8 @@ function Projects() {
         <nav aria-label="Projects pagination">
           <ul className="pagination">
             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-              <button
-                className="page-link"
+              <button 
+                className="page-link" 
                 onClick={() => handlePageChange(currentPage - 1)}
                 disabled={currentPage === 1}
               >
@@ -191,8 +196,8 @@ function Projects() {
                 </li>
               ) : (
                 <li key={item.value} className={`page-item ${currentPage === item.value ? 'active' : ''}`}>
-                  <button
-                    className="page-link"
+                  <button 
+                    className="page-link" 
                     onClick={() => handlePageChange(item.value)}
                   >
                     {item.value}
@@ -202,8 +207,8 @@ function Projects() {
             ))}
             
             <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-              <button
-                className="page-link"
+              <button 
+                className="page-link" 
                 onClick={() => handlePageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
@@ -264,29 +269,29 @@ function Projects() {
                   </th>
                 </tr>
               </thead>
-            <tbody>
-              {projects.map((project) => {
-                const projectId = project.project_id || project.id || project._id;
-                return (
-                  <tr
-                    key={projectId}
-                    className="cursor-pointer"
-                    onClick={() => window.location.href = `/project/${projectId}`}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <td>
-                      <Link to={`/project/${projectId}`} className="text-decoration-none">
-                        {projectId}
-                      </Link>
-                    </td>
-                    <td>{project.name}</td>
-                    <td>{renderAttributes(project.attributes)}</td>
-                    <td>{project.createdAt ? new Date(project.createdAt).toLocaleString() : 'N/A'}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+              <tbody>
+                {projects.map((project) => {
+                  const projectId = project.project_id || project.id || project._id;
+                  return (
+                    <tr
+                      key={projectId}
+                      className="cursor-pointer"
+                      onClick={() => window.location.href = `/project/${projectId}`}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <td>
+                        <Link to={`/project/${projectId}`} className="text-decoration-none">
+                          {projectId}
+                        </Link>
+                      </td>
+                      <td>{project.name}</td>
+                      <td>{renderAttributes(project.attributes)}</td>
+                      <td>{project.createdAt ? new Date(project.createdAt).toLocaleString() : 'N/A'}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
           
           <PaginationControls />
@@ -297,3 +302,33 @@ function Projects() {
 }
 
 export default Projects;
+```
+
+## Key Changes Made
+
+1. **Added State Variables for Pagination and Sorting**
+   - Added state for currentPage, perPage, totalItems, totalPages
+   - Added state for sortBy and sortOrder
+
+2. **Updated fetchProjects Function**
+   - Modified to accept pagination and sorting parameters
+   - Added URL parameter handling for API requests
+   - Updated to extract and store pagination information from the response
+
+3. **Added Sorting Functionality**
+   - Added handleSort function to manage column sorting
+   - Updated table headers to be clickable for sorting
+   - Added visual indicators for sort direction
+
+4. **Added PaginationControls Component**
+   - Created a nested component for pagination UI
+   - Implemented smart pagination with ellipses for large page counts
+   - Added "Items per page" selector
+   - Added Previous/Next buttons
+   - Added page count information
+
+5. **Updated UI Structure**
+   - Added PaginationControls below the table
+   - Wrapped table and pagination in a fragment
+
+This implementation provides a complete solution for handling paginated API responses and offering users a full set of pagination controls.
