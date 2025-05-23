@@ -38,5 +38,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000"
+  "proxy": "http://ngs360-apiserver-dev.us-east-1.elasticbeanstalk.com"
 }
