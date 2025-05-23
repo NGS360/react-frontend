@@ -37,6 +37,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://ngs360-apiserver-dev.us-east-1.elasticbeanstalk.com"
+  }
 }
